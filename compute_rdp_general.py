@@ -25,11 +25,11 @@ def compute_rdp_general(noise_type,orders,c_type,C,sen,q):
     if noise_type=="cactus":  
         # For cactus, we directly use the discrete pmf from file to compute the renyi-divergence with given order
 
-        filename = ('/Users/weifei/GitHub/PrivacyResearch/TestData/cactusM_s%.1f_%s_c%.2f_x.csv' %(sen,c_type,C))
+        filename = ('TestData/cactusM_s%.1f_%s_c%.2f_x.csv' %(sen,c_type,C))
         x = np.genfromtxt(filename, dtype=np.float32)
         x = x.reshape(-1)
 
-        filename = ('/Users/weifei/GitHub/PrivacyResearch/TestData/cactusM_s%.1f_%s_c%.2f_p.csv' %(sen,c_type,C))
+        filename = ('TestData/cactusM_s%.1f_%s_c%.2f_p.csv' %(sen,c_type,C))
         p = np.genfromtxt(filename, dtype=np.float32)
         p = p.reshape(len(p),1)
 
@@ -52,7 +52,6 @@ def compute_rdp_general(noise_type,orders,c_type,C,sen,q):
         n=500.0 # quantization rate
         xmax=max(10,10*np.sqrt(C)) # the domin limit
         x=np.linspace(-xmax, xmax, int(2*xmax*n)) # domain of the distribution
-        print("hereeee")
         if noise_type=="gaussian":
             sigma=np.sqrt(C) if c_type=="l2" else C*np.sqrt(np.pi/2)
             f = lambda x: 1/np.sqrt(2*np.pi)/sigma*np.exp(-x**2/2/sigma**2)
@@ -73,7 +72,6 @@ def compute_rdp_general(noise_type,orders,c_type,C,sen,q):
         print("l2 cost =", l2)
     
         qs = q*np.array([f(X) for X in x-sen])/n+(1-q)*ps
-        print("qs",qs[0:2])
         ps= ps.reshape(-1)
         qs = qs.reshape(-1)
     

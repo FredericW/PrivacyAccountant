@@ -24,11 +24,11 @@ def compute_rdp_general(noise_type,orders,c_type,C,sen,q):
  
   if noise_type=="cactus":  # For cactus, we directly use the discrete pmf from file to compute the renyi-divergence with given order
 
-    filename = ('/home/fwei16/privacy_data/cactus_x_d%.1f_%s_%.2f.csv' %(sen,c_type,C))
+    filename = ('/Users/weifei/GitHub/PrivacyAccountant/TestPlots/cactus_x_d%.1f_%s_%.2f.csv' %(sen,c_type,C))
     x = np.genfromtxt(filename, dtype=np.float32)
     x = x.reshape(-1)
 
-    filename = ('/home/fwei16/privacy_data/cactus_p_d%.1f_%s_%.2f.csv' %(sen,c_type,C))
+    filename = ('/Users/weifei/GitHub/PrivacyAccountant/TestPlots/cactus_p_d%.1f_%s_%.2f.csv' %(sen,c_type,C))
     p = np.genfromtxt(filename, dtype=np.float32)
     p = p.reshape(len(p),1)
 

@@ -1,4 +1,4 @@
-# Experiment Codes with Vectorized Keras DP-SGD optimizers
+# Privacy Accountants with DP-SGD
 
 ## mnist_dpgsd_test_keras_vectorized.py
 This is the main function of the experiments, with keras vectorized dp-sgd optimizers modfied by different adding-noise mechanisms.

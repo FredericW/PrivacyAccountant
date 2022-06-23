@@ -191,7 +191,7 @@ def make_vectorized_keras_optimizer_class(cls):
         
         if self._logging:
           def my_numpy_func(grad):
-            filename = ('norm_%d_v%1.2f_gradient.npy' %(self._dpsgd_type,(self._l2_norm_clip * self._noise_multiplier)**2))
+            filename = ('TestData/norm_%d_v%1.2f_gradient.npy' %(self._dpsgd_type,(self._l2_norm_clip * self._noise_multiplier)**2))
             buf=np.load(filename)
             buf=np.append(buf, grad)
             np.save(filename, buf)
@@ -238,7 +238,7 @@ def make_vectorized_keras_optimizer_class(cls):
                 result=np.random.laplace(size=size, scale=noise_stddev/np.sqrt(2))
                 return  np.ndarray.astype(result, np.float32)
               else:
-                filename = ('privacy_data/cactus_samples_d%1.1f_v%1.2f.npy' %(self._l2_norm_clip, noise_stddev**2))
+                filename = ('TestData/cactus_samples_d%1.1f_v%1.2f.npy' %(self._l2_norm_clip, noise_stddev**2))
                 samples=np.load(filename,allow_pickle=True)
                 result=np.zeros(size).reshape(-1)                
                 for a in range(len(result)):

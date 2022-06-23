@@ -52,11 +52,11 @@ def compute_rdp_general(noise_type,orders,c_type,C,sen,q):
         n=500.0 # quantization rate
         xmax=max(10,10*np.sqrt(C)) # the domin limit
         x=np.linspace(-xmax, xmax, int(2*xmax*n)) # domain of the distribution
-    
+        print("hereeee")
         if noise_type=="gaussian":
             sigma=np.sqrt(C) if c_type=="l2" else C*np.sqrt(np.pi/2)
             f = lambda x: 1/np.sqrt(2*np.pi)/sigma*np.exp(-x**2/2/sigma**2)
-            print("here")
+            print("here",sigma)
 
         if noise_type == "laplace":
             b = np.sqrt(C/2) if c_type=="l2" else C
@@ -73,7 +73,7 @@ def compute_rdp_general(noise_type,orders,c_type,C,sen,q):
         print("l2 cost =", l2)
     
         qs = q*np.array([f(X) for X in x-sen])/n+(1-q)*ps
-        print("qs"=qs)
+        print("qs",qs[0:2])
         ps= ps.reshape(-1)
         qs = qs.reshape(-1)
     

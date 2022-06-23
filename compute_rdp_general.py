@@ -53,11 +53,11 @@ def compute_rdp_general(noise_type,orders,c_type,C,sen,q):
     x=np.linspace(-xmax, xmax, int(2*xmax*n)) # domain of the distribution
     
     if noise_type=="gaussian":
-      sigma=np.sqrt(C) if c_type=="l2" else C*np.sqrt(np.pi/2)
+      sigma=np.sqrt(C) if c_type=="L2" else C*np.sqrt(np.pi/2)
       f = lambda x: 1/np.sqrt(2*np.pi)/sigma*np.exp(-x**2/2/sigma**2)
     
     elif noise_type == "laplace":
-      b = np.sqrt(C/2) if c_type=="l2" else C
+      b = np.sqrt(C/2) if c_type=="L2" else C
       f = lambda x:1/2/b*np.exp(-np.abs(x)/b)
     
     elif noise_type == "airy":

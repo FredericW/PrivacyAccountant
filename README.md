@@ -7,7 +7,7 @@ Comparing with the one in the tutorial, we added two new flags, the "dpsgd_type"
 ## dp_optimizer_keras_vectorized.py
 You may find a file with the same name under tensorflow_privacy/privacy/optimizers. It worth noting that the noise adding mechanism is based on a tf.function decorator to allow we call numpy function in the graph mode. The cactus generating function is based on a pool with large number of samples associated with different parameters. The cactus sample generating function is located a jupyter notebook which will be introduced later.
 
-## cactus_generating.py
+## cactus_generator.py
 This file and functions in this file is somehow "independent" from all others. As the pdf generator works significantly slower than its sibling on Matlab. You may directly run it and it will generate "x" and the corresponding cdf files, they are saved in .cvs files under test_data directory.
 
 ## cactus_sampling.py

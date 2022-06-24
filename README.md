@@ -13,12 +13,3 @@ This file and functions in this file is somehow "independent" from all others. A
 ## cactus_sampling.py
 This sampling function relies on the .csv files which give the 'cdf' on range 'x'(from -8 to 8, quantization level=1/200) with a given variance, and a pool of samples will be saved to a .npy file.
 NOTE: The file name contains the variance but NOT the stddev! It worth noting that in the main codes, we use stddev which is defined as "noise_multiplier*l2_norm_clip".
-
-## cactus_sampling_generating.ipynb
-This notebook combines "cactus_generating.py" and "cactus_sampling.py".
-
-## privacy_plot.ipynb
-This notebook contains ploting functions to display the collected results.
-
-## privacy_test.ipynb
-This notebook is a testing case for functions used in other codes.

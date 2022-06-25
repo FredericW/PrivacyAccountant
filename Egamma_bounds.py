@@ -6,7 +6,6 @@ def pq_upper(Eg,gamma_grid):
     
     Eg_grid = [Eg(gamma) for gamma in gamma_grid]
     Eg_grid = np.array(Eg_grid)
-    print("Eg_grid_shape=",np.shape(Eg_grid))
     
     # We are ready to compute the new (p3,q3) pairs, which is unifom on log(gamma)
     aa = np.array((Eg_grid[2:]-Eg_grid[1:-1])/(gamma_grid[2:]-gamma_grid[1:-1]))

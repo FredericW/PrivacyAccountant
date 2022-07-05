@@ -29,22 +29,23 @@ def pq_lower(Eg,Egslope,gamma_grid):
         myfunc = lambda gamma: (Eg(gamma)-f_grid[i-1])/(gamma-gamma_grid[i-1])-Egslope(gamma)
         tmin = gamma_grid[i-1]+np.spacing(gamma_grid[i-1])
         tmax = gamma_grid[i]
+        if i%100==0:
+            print(i)
         
         if myfunc(tmax) >= 0:
             f_grid[i]=Eg(tmax)
         else:
             if myfunc(tmin)<=0:
-                slp=Egslope(gamma_grid2[i-1])
-            else:
-                t = fslove(myfunc,[tmin,tmax])
+                slp=Egslope(gamma_grid[i-1])
+            else:          
+                t = fsolve(myfunc,tmin,xtol=1e-3)
                 slp = (Eg(t)-f_grid[i-1])/(t-gamma_grid[i-1])
             f_grid[i] = max(0,f_grid[i-1]+slp*(gamma_grid[i]-gamma_grid[i-1]))
     gamma_grid_ext = np.concatenate(([0],gamma_grid))
     print(np.shape(gamma_grid_ext))
     f_grid_ext = np.concatenate(([1],f_grid))
-    hull = ConvexHull([gamma_grid_ext,f_grid_ext])
-    print("gamma_grid_ext",np.shape(gamma_grid_ext))
-    print("f_grid_ext",np.shape(f_grid_ext))
+    print(np.shape(f_grid_ext))
+    hull = ConvexHull(np.stack((gamma_grid_ext,f_grid_ext)))
     K=hull.simplices
     print("K",K)
     slope = np.array([f_grid_ext[i] for i in K[1:-1]]-[f_grid_ext[i] for i in K[0:-2]])/np.array([gamma_grid_ext[i] for i in K[1:-1]]-[gamma_grid_ext[i] for i in K[0:-2]])
